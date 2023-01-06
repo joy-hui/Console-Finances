@@ -6,11 +6,11 @@
 * The greatest increase in profits (date and amount) over the entire period
 * The greatest decrease in losses (date and amount) over the entire period
 ## There are some screenshots
-
-
+![image of screenshot2](code.png)
+![image of screenshot1](result.png)
 
 ## This is the link
-*
 
 
-A/b.png
+
+
