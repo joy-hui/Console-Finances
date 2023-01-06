@@ -86,11 +86,9 @@ var finances = [
   ["Jan-2017", 138230],
   ["Feb-2017", 671099],
 ];
+ //console.log(finances[0][1]);
 
-// console.log(finances[0][1]);
-
-//The total number of months included in the dataset
-//The net total amount of Profit/Losses over the entire period
+// the base var we use
 var number = 0;
 var sumlProfit = 0;
 var averagechange = 0;
@@ -99,46 +97,43 @@ var sum = 0;
 var change = new Array();
 var j = 0;
 
-for (var i = 0; i < finances.length-1; i++) {
+// use loop to find the total months the amount of Profit/Losses and the sum changes ,then store the changes in a Array
+for (var i = 0; i < finances.length - 1; i++) {
   number++;
   //console.log(j);
   var sumlProfit = sumlProfit + finances[i][1];
   //console.log(sumlProfit);
-//   console.log(finances[i+1][1]);
-  change[j] = finances[i+1][1] - finances[i][1];
+  //console.log(finances[i+1][1]);
+  change[j] = finances[i + 1][1] - finances[i][1];
 
-  sumchange=sumchange+change[j];
+  sumchange = sumchange + change[j];
   j++;
-  
 }
 
-
-my_max=Math.max(...change);
-my_min=Math.min(...change);
+// find the greatest increase and greatest decrease in change
+// find months
+my_max = Math.max(...change);
+my_min = Math.min(...change);
 function checkMonthMax(mnt) {
-    return mnt == my_max;
-  }
-max_ind=change.findIndex(checkMonthMax);
+  return mnt == my_max;
+}
+max_ind = change.findIndex(checkMonthMax);
 function checkMonthMin(mnt) {
-    return mnt == my_min;
-  }
-min_ind=change.findIndex(checkMonthMin);
-
-// console.log(finances[max_ind+1][0]);
-// console.log(finances[min_ind+1][0]);
-// console.log(change);
-// console.log(my_max);
-// console.log(my_min);
+  return mnt == my_min;
+}
+min_ind = change.findIndex(checkMonthMin);
 
 sumlProfit += finances[i][1];
+   //console.log(sumchange);
 
-//console.log(sumchange);
-averagechange = sumchange/number;
+// calculate average of the changes
+averagechange = sumchange / number;
 averagechange = averagechange.toFixed(3);
 
-alert(`The total Months is ${i+1} 
+// output the result
+alert(`The total Months is ${i + 1} 
 \n The total amount of Profit is $${sumlProfit}  
 \n The Average change is ${averagechange}
-\n The greatest increase is ${finances[max_ind+1][0]}  $${my_max}
-\n The greatest decrease is ${finances[min_ind+1][0]}  $${my_min}`);
-//alert(`The total amount of Profit is ${sumlProfit}`);
+\n The greatest increase is ${finances[max_ind + 1][0]}  $${my_max}
+\n The greatest decrease is ${finances[min_ind + 1][0]}  $${my_min}`);
+
