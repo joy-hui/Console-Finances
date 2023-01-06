@@ -87,16 +87,58 @@ var finances = [
   ["Feb-2017", 671099],
 ];
 
-//The total number of months included in the dataset 
+// console.log(finances[0][1]);
+
+//The total number of months included in the dataset
 //The net total amount of Profit/Losses over the entire period
+var number = 0;
+var sumlProfit = 0;
+var averagechange = 0;
+var sumchange = 0;
+var sum = 0;
+var change = new Array();
 var j = 0;
-var sumlProfit=0;
-for (var i = 0; i < finances.length; i++) {
-  j++;
+
+for (var i = 0; i < finances.length-1; i++) {
+  number++;
   //console.log(j);
-  var sumlProfit= sumlProfit+finances[i][1];
+  var sumlProfit = sumlProfit + finances[i][1];
   //console.log(sumlProfit);
+//   console.log(finances[i+1][1]);
+  change[j] = finances[i+1][1] - finances[i][1];
+
+  sumchange=sumchange+change[j];
+  j++;
+  
 }
-//console.log(j);
-alert(`The total Months is  ${j} \n The total amount of Profit is ${sumlProfit} `);
+
+
+my_max=Math.max(...change);
+my_min=Math.min(...change);
+function checkMonthMax(mnt) {
+    return mnt == my_max;
+  }
+max_ind=change.findIndex(checkMonthMax);
+function checkMonthMin(mnt) {
+    return mnt == my_min;
+  }
+min_ind=change.findIndex(checkMonthMin);
+
+// console.log(finances[max_ind+1][0]);
+// console.log(finances[min_ind+1][0]);
+// console.log(change);
+// console.log(my_max);
+// console.log(my_min);
+
+sumlProfit += finances[i][1];
+
+//console.log(sumchange);
+averagechange = sumchange/number;
+averagechange = averagechange.toFixed(3);
+
+alert(`The total Months is ${i+1} 
+\n The total amount of Profit is $${sumlProfit}  
+\n The Average change is ${averagechange}
+\n The greatest increase is ${finances[max_ind+1][0]}  $${my_max}
+\n The greatest decrease is ${finances[min_ind+1][0]}  $${my_min}`);
 //alert(`The total amount of Profit is ${sumlProfit}`);
